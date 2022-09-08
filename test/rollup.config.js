@@ -1,4 +1,4 @@
-import copyStatic from "../main.js"
+import copyStatic from "../."
 
 export default {
     input: "app/main.mjs",

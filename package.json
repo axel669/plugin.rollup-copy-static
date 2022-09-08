@@ -1,8 +1,8 @@
 {
-  "name": "rollup-copy-static",
-  "version": "0.1.0",
+  "name": "@axel669/rollup-copy-static",
+  "version": "0.1.2",
   "description": "Small plugin to copy static files when building with rollup.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "cd test && rollup -c"
   },

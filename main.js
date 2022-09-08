@@ -32,4 +32,4 @@ const copy = (source) => {
     }
 }
 
-export default copy
+module.exports = copy
