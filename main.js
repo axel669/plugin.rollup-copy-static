@@ -1,35 +1,35 @@
-const path = require("path")
+import path from "node:path"
 
-const fs = require("fs-jetpack")
-const glob = require("fast-glob")
+import glob from "fast-glob"
+import fs from "fs-jetpack"
 
-const copy = (source) => {
+const globArgs = (source) => {
+    if (source.glob !== undefined) {
+        return {
+            pattern: source.glob,
+            dir: path.resolve(source.dir ?? ".")
+        }
+    }
     return {
-        async generateBundle() {
-            const sourceDir = path.resolve(source)
-
-            if (fs.exists(sourceDir) === false) {
-                console.log("Static source not found, skipping")
-                return
-            }
-
-            const files = await glob(
-                "**/*",
-                { cwd: sourceDir }
-            )
-
+        pattern: "**/*",
+        dir: path.resolve(source)
+    }
+}
+export default (...sources) => ({
+    async generateBundle() {
+        for (const source of sources) {
+            const { pattern, dir } = globArgs(source)
+            const files = await glob(pattern, { cwd: dir })
             for (const file of files) {
                 this.emitFile({
                     type: "asset",
                     fileName: file,
-                    source: fs.read(
-                        path.resolve(sourceDir, file),
+                    source: await fs.readAsync(
+                        path.resolve(dir, file),
                         "buffer"
                     )
                 })
             }
         }
     }
-}
-
-module.exports = copy
+})

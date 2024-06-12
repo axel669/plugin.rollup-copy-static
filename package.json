@@ -1,29 +1,27 @@
 {
   "name": "@axel669/rollup-copy-static",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Small plugin to copy static files when building with rollup.",
   "main": "main.js",
+  "type": "module",
   "scripts": {
-    "test": "cd test && rollup -c"
+    "test": "pnpm -c test test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axel669/rollup-copy-static.git"
+    "url": "git+https://github.com/axel669/plugin.rollup-copy-static.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/axel669/rollup-copy-static/issues"
+    "url": "https://github.com/axel669/plugin.rollup-copy-static/issues"
   },
-  "homepage": "https://github.com/axel669/rollup-copy-static#readme",
-  "dependencies": {
-    "fast-glob": "^3.2.11",
-    "fs-jetpack": "^4.3.1"
-  },
-  "devDependencies": {
-    "rollup": "^2.79.0"
-  },
+  "homepage": "https://github.com/axel669/plugin.rollup-copy-static#readme",
   "files": [
     "main.js"
-  ]
+  ],
+  "dependencies": {
+    "fast-glob": "^3.3.2",
+    "fs-jetpack": "^5.1.0"
+  }
 }
