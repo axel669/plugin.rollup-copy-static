@@ -1,4 +1,4 @@
-import copyStatic from "../."
+import copy from "../main.js"
 
 export default {
     input: "app/main.mjs",
@@ -7,6 +7,10 @@ export default {
         format: "esm",
     },
     plugins: [
-        copyStatic("static")
+        copy(
+            "static",
+            { glob: "extra/*.css" },
+            { glob: "**/*.css", dir: "extra" },
+        )
     ]
 }
